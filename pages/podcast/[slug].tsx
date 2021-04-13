@@ -97,8 +97,6 @@ export function getStaticPaths({ locales = [] }: GetStaticPathsContext) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const t = await getT(locale, "common");
-
   const hosts = [
     { name: "Justin", title: "Software Developer" },
     { name: "Fiamma", title: "Product Manager" },
@@ -108,6 +106,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const guests = [{ name: "Mirko", title: "Intern" }];
   return {
     revalidate: 1,
-    props: { title: t("title"), participants: { hosts, guests } },
+    props: { participants: { hosts, guests } },
   };
 };

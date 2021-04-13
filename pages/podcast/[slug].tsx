@@ -3,18 +3,9 @@ import getT from "next-translate/getT";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { GetStaticPathsContext, GetStaticProps } from "next";
+import Participants from "../../components/participants";
 
-interface Person {
-  name: string;
-  title: string;
-}
-
-interface Path {
-  locale: string;
-  params: { slug: string };
-}
-
-export default function DynamicRoute({
+export default function Podcast({
   title = "",
   participants,
 }: {
@@ -40,39 +31,27 @@ export default function DynamicRoute({
         {query.slug} - {lang}
       </h3>
       <div
-        style={{ backgroundColor: "Azure", padding: "1rem", margin: "1rem 0" }}
+        style={{ backgroundColor: "Azure", padding: "2rem", margin: "1rem 0" }}
       >
-        <h3>
-          <span style={{ color: "red" }}>Should be singular -- </span>
-          {t(`podcast:guests`, { count: guests.length })}
-        </h3>
-        <hr />
-        {guests.map((guest: { name: string; title: string }) => (
-          <>
-            <h4>{guest.name}</h4>
-            <p>{guest.title}</p>
-          </>
-        ))}
+        <p style={{ color: "red" }}>This should be singular</p>
+        <Participants
+          heading={t(`podcast:guests`, { count: guests.length })}
+          participants={guests}
+        />
       </div>
 
       <div
         style={{
           backgroundColor: "Cornsilk",
-          padding: "1rem",
+          padding: "1rem 3rem",
           margin: "1rem 0",
         }}
       >
-        <h3>
-          <span style={{ color: "red" }}>Should be plural -- </span>
-          {t(`podcast:hosts`, { count: hosts.length })}
-        </h3>
-        <hr />
-        {hosts.map((guest: { name: string; title: string }) => (
-          <>
-            <h4>{guest.name}</h4>
-            <p>{guest.title}</p>
-          </>
-        ))}
+        <p style={{ color: "red" }}>This should be plural</p>
+        <Participants
+          heading={t(`podcast:hosts`, { count: hosts.length })}
+          participants={hosts}
+        />
       </div>
 
       <Link href="/">

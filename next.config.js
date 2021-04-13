@@ -1,9 +1,12 @@
-const nextTranslate = require('next-translate')
-const withMDX = require('@next/mdx')()
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const path = require("path");
+const nextTranslate = require("next-translate");
+const { locales, defaultLocale } = require("./i18n.json");
 
-console.log('Webpack version', require('webpack').version)
+const nextConfig = {
+  i18n: { localeDetection: true },
+  future: {
+    webpack5: true,
+  },
+};
 
-module.exports = nextTranslate(withBundleAnalyzer(withMDX()))
+module.exports = nextTranslate(nextConfig);

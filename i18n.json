@@ -1,0 +1,8 @@
+{
+  "locales": ["en-gb", "fr-fr", "es-es"],
+  "defaultLocale": "en-gb",
+  "pages": {
+    "*": ["common"],
+    "/podcast/[slug]": ["podcast"]
+  }
+}

@@ -3,7 +3,7 @@ const nextTranslate = require("next-translate");
 const { locales, defaultLocale } = require("./i18n.json");
 
 const nextConfig = {
-  i18n: { localeDetection: true },
+  i18n: { localeDetection: false },
   future: {
     webpack5: true,
   },
